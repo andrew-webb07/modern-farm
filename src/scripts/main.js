@@ -1,8 +1,9 @@
 import { createPlan } from "./plan.js"
-
-import {getPlants} from "./field.js"
+import {usePlants} from "./field.js"
 import { plantSeeds } from "./tractor.js"
 import { harvestPlants } from "./harvester.js"
+import { Catalog } from "./catalog.js"
+
 
 
 
@@ -10,10 +11,16 @@ const yearlyPlan = createPlan()
 
 plantSeeds(yearlyPlan)
 
-const plants = getPlants()
+const plants = usePlants()
 
 
-console.log(harvestPlants(plants))
+const newFoodArray = harvestPlants(plants)
 
+const mainContainer = document.querySelector(".container")
 
+const renderAllHTML = () => {
+    mainContainer.innerHTML = Catalog(newFoodArray)
+}
+
+renderAllHTML()
 
