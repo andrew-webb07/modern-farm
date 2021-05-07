@@ -2,18 +2,24 @@
 
 export const harvestPlants = (plantsArray) => {
     let seedsHarvested = []
+   
 
-    for(let i = 0; i < plantsArray.length; i++) {
-        if (plantsArray[i].type === "corn") {
-            for(let ouptut = 0; output < (plantsArray[i].output / 2); output++) {
-                seedsHarvested.push(plantsArray[i])
-            }
+for (const plant of plantsArray) {
+    
+    if (plant.length > 1) {
+        for (const corn of plant) {
+            for(let plantOutput = 0; plantOutput < (corn.output / 2); plantOutput++) {
+                seedsHarvested.push(corn)
         }
-        else {
-            for(let ouptut = 0; output < plantsArray[i].output; output++) {
-                seedsHarvested.push(plantsArray[i])
-            }
+        
         }
     }
+    else {
+        for(let plantOutput = 0; plantOutput < plant.output; plantOutput++) {
+            seedsHarvested.push(plant)
+        }
+    }
+}
+
     return seedsHarvested
 }
